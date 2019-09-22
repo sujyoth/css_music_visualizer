@@ -1,6 +1,6 @@
 window.onload = function() {
   
-  var file = document.getElementById("thefile");
+  var file = document.getElementById("audio_file");
   var audio = document.getElementById("audio");
   
   file.onchange = function() {
@@ -20,7 +20,7 @@ window.onload = function() {
     src.connect(analyser);
     analyser.connect(context.destination);
 
-    analyser.fftSize = 256;
+    analyser.fftSize = 1024;
 
     var bufferLength = analyser.frequencyBinCount;
     console.log(bufferLength);
@@ -30,7 +30,7 @@ window.onload = function() {
     var WIDTH = canvas.width;
     var HEIGHT = canvas.height;
 
-    var barWidth = (WIDTH / bufferLength) * 2.5;
+    var barWidth = (WIDTH / bufferLength);
     var barHeight;
     var x = 0;
 
@@ -52,7 +52,7 @@ window.onload = function() {
         var b = 50;
 
         ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+        ctx.fillRect(x, (HEIGHT - barHeight) / 2, barWidth, barHeight);
 
         x += barWidth + 1;
       }
