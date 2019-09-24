@@ -21,13 +21,21 @@ audio {
   position: fixed;
   top: 10px;
   right: 10px;
-  z-index: 100;
   border-radius: 25px;
   display: block;
   margin: 20px;
-  padding: 10px;
+  padding: 20px;
   background-color: #101010;
   display:inline-block;
+}
+
+#controls {
+  z-index: 100;
+  opacity: 0.0;
+}
+
+#controls:hover {
+  opacity: 1.0;
 }
 
 .select-style {
