@@ -30,7 +30,7 @@ window.onload = function() {
     var WIDTH = canvas.width;
     var HEIGHT = canvas.height;
 
-    var barWidth = (WIDTH / bufferLength);
+    var barWidth = (WIDTH / bufferLength / 2);
     var barHeight;
     var x = 0;
 
@@ -41,20 +41,29 @@ window.onload = function() {
 
       analyser.getByteFrequencyData(dataArray);
 
+      // Making the black background
       ctx.fillStyle = "#000";
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
+      var k1 = WIDTH / 2;
+      var k2 = WIDTH / 2;
       for (var i = 0; i < bufferLength; i++) {
-        barHeight = dataArray[i];
+        valData = dataArray[i];
         
-        var r = barHeight + (25 * (i/bufferLength));
+        var r = valData + (25 * (i/bufferLength));
         var g = 250 * (i/bufferLength);
         var b = 50;
 
-        ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-        ctx.fillRect(x, (HEIGHT - barHeight) / 2, barWidth, barHeight);
+        barHeight = valData * 2;
 
-        x += barWidth + 1;
+        ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+        ctx.fillRect(k1, (HEIGHT - barHeight) / 2, barWidth, barHeight);
+
+        ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+        ctx.fillRect(k2, (HEIGHT - barHeight) / 2, barWidth, barHeight);
+
+        k1 += barWidth + 1;
+        k2 -= barWidth + 1;
       }
     }
 
