@@ -20,7 +20,7 @@ window.onload = function() {
     src.connect(analyser);
     analyser.connect(context.destination);
 
-    analyser.fftSize = 1024;
+    analyser.fftSize = 512;
 
     var bufferLength = analyser.frequencyBinCount;
     console.log(bufferLength);
