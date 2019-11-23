@@ -1,3 +1,3 @@
 # CSS Music Visualizer
 
-Try it [here](sujyoth.github.io/css_music_visualizer)
+Try it [here](https://sujyoth.github.io/css_music_visualizer/)
